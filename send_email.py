@@ -12,7 +12,7 @@ message = EmailMessage()
 message["From"] = sender_email
 message["To"] = receiver_email
 message["Subject"] = subject
-message.set_content(body)  # notice the built-in method
+# message.set_content(body)  (notice the built-in method)
 
 html = f"""
 <html>
@@ -22,6 +22,8 @@ html = f"""
     </body>
 </html>
 """
+
+message.add_alternative(html, subtype="html")  # adding the "alternative" content of html.
 
 context = ssl.create_default_context()  # this gives us a secure connection to Gmail's server, since we dont have our own server
 
